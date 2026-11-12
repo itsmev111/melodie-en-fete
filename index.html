@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mélodie en Fête • La Fête de la Musique en France</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Floating Background Musical Notes Canvas -->
+  <canvas id="floating-notes-canvas"></canvas>
+
+  <!-- Confetti Celebration Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <div class="navbar-inner">
+      <a href="#hero" class="brand-wrapper">
+        <span class="brand-logo-icon">🎷</span>
+        <div>
+          <div class="brand-title" data-i18n="navTitle">Fête de la Musique</div>
+          <div class="brand-subtitle" data-i18n="navSubtitle">21 Juin • Faites de la Musique !</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#histoire" class="nav-link" data-i18n="navHistory">Histoire & Origines</a></li>
+          <li><a href="#diffusion" class="nav-link" data-i18n="navSpread">Diffusion Mondiale</a></li>
+          <li><a href="#histoires-vraies" class="nav-link" data-i18n="navStories">Vraies Histoires</a></li>
+          <li><a href="#carte" class="nav-link" data-i18n="navMap">Carte de France</a></li>
+          <li><a href="#genres" class="nav-link" data-i18n="navGenres">Genres & Artistes</a></li>
+          <li><a href="#gastronomie" class="nav-link" data-i18n="navFood">Gastronomie</a></li>
+          <li><a href="#celebration" class="nav-link" data-i18n="navCelebration">Célébration</a></li>
+          <li><a href="#rues" class="nav-link" data-i18n="navStreets">Rues & Cafés</a></li>
+          <li><a href="#photos" class="nav-link" data-i18n="navPhotos">Carnet Photos</a></li>
+          <li><a href="#survie" class="nav-link" data-i18n="navSurvival">Guide du Fêtard</a></li>
+          <li><a href="#monde" class="nav-link" data-i18n="navWorld">Le Monde</a></li>
+          <li><a href="#studio" class="nav-link" data-i18n="navSynthesizer">Studio Musical</a></li>
+          <li><a href="#quiz" class="nav-link" data-i18n="navQuiz">Grand Quiz</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Language Switcher Button -->
+        <button id="lang-toggle-btn" class="btn btn-lang" onclick="switchLanguage()">
+          English 🇬🇧
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <div class="content-wrapper">
+      <div class="hero-badge-pill" data-i18n="heroBadge">
+        Festival Officiel du 21 Juin • Solstice d'Été
+      </div>
+
+      <h1 class="hero-main-title" data-i18n="heroTitle">
+        Faites de la Musique, Fête de la Musique !
+      </h1>
+
+      <p class="hero-description" data-i18n="heroSubtitle">
+        La plus grande célébration populaire et universelle de France. Quand les rues, places et terrasses se transforment en une scène ouverte sous le soleil du solstice d'été.
+      </p>
+
+      <div class="hero-quote-box" data-i18n="heroQuote">
+        « La musique sera partout et le concert nulle part ! » — Maurice Fleuret (1982)
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#histoire" class="btn btn-primary" data-i18n="heroBtnExplore">
+          Explorer le Festival 🎶
+        </a>
+        <a href="#carte" class="btn btn-secondary" data-i18n="heroBtnMap">
+          Carte Interactive 🗺️
+        </a>
+        <button class="btn btn-secondary" onclick="selectMusicStyle('pachelbel')" data-i18n="heroBtnPlayMusic">
+          🎹 Écouter le Piano Apaisant
+        </button>
+      </div>
+
+      <!-- Stats Banner -->
+      <div class="stats-banner">
+        <div class="stat-item">
+          <div class="stat-value" data-i18n="statDate">21 Juin</div>
+          <div class="stat-label" data-i18n="statDateLabel">Solstice d'été & jour le plus long</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" data-i18n="statCountries">120+ Pays</div>
+          <div class="stat-label" data-i18n="statCountriesLabel">Célébré sur les 5 continents</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" data-i18n="statFree">100% Gratuit</div>
+          <div class="stat-label" data-i18n="statFreeLabel">Accès libre pour tous</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" data-i18n="statMusicians">5M+ Musiciens</div>
+          <div class="stat-label" data-i18n="statMusiciansLabel">Amateurs et professionnels unis</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- History & Origins Section (French Ministry of Culture Sources) -->
+  <section id="histoire">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="historyTag">Patrimoine & Culture</span>
+        <h2 class="section-title" data-i18n="historyTitle">L'Histoire et les Origines Officielles</h2>
+        <p class="section-subtitle" data-i18n="historySubtitle">
+          Une révolution culturelle impulsée par le Ministère de la Culture français pour démocratiser la pratique musicale.
+        </p>
+      </div>
+
+      <div class="history-cards-grid">
+        <div class="glass-card">
+          <span class="card-year-badge">1981</span>
+          <h3 class="card-title" data-i18n="historyCard1Title">1981 : Le Constat Historique</h3>
+          <p class="card-body" data-i18n="historyCard1Text">
+            En octobre 1981, Maurice Fleuret est nommé directeur de la Musique et de la Danse au Ministère de la Culture dirigé par Jack Lang. Une grande enquête nationale révèle que 5 millions de Français jouent d'un instrument, mais aucune fête publique ne met en valeur ces musiciens anonymes.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <span class="card-year-badge">1982</span>
+          <h3 class="card-title" data-i18n="historyCard2Title">1982 : Le Coup d'Éclat du 21 Juin</h3>
+          <p class="card-body" data-i18n="historyCard2Text">
+            Organisée en seulement quelques semaines, la première édition a lieu le 21 juin 1982, jour du solstice d'été. Le mot d'ordre est un jeu de mots légendaire : « Faites de la musique, Fête de la Musique ». Contre toute attente, des centaines de milliers de Français descendent dans les rues avec trompettes, violons et guitares.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <span class="card-year-badge">1985 - 1997</span>
+          <h3 class="card-title" data-i18n="historyCard3Title">1985 : L'Envol Européen & Mondial</h3>
+          <p class="card-body" data-i18n="historyCard3Text">
+            L'année 1985 marque l'Année européenne de la musique. En moins de 10 ans, la fête s'étend à Berlin, Budapest, Rome, puis à New York et Tokyo. En 1997, une Charte internationale est signée à Budapest pour préserver l'esprit d'ouverture et de gratuité.
+          </p>
+        </div>
+      </div>
+
+      <!-- Founding Principles -->
+      <div class="principles-box">
+        <h3 class="principles-title">
+          <span>📜</span>
+          <span data-i18n="historyQuoteTitle">Les Principes Fondateurs :</span>
+        </h3>
+        <ul class="principles-list">
+          <li>
+            <span class="bullet-icon">✨</span>
+            <span data-i18n="historyRule1">Gratuité totale pour le public et interdiction de tarification des scènes.</span>
+          </li>
+          <li>
+            <span class="bullet-icon">✨</span>
+            <span data-i18n="historyRule2">Ouverture à tous les musiciens, du débutant aux artistes confirmés.</span>
+          </li>
+          <li>
+            <span class="bullet-icon">✨</span>
+            <span data-i18n="historyRule3">Occupation festive des espaces publics : rues, places, parcs, gares, hôpitaux et musées.</span>
+          </li>
+          <li>
+            <span class="bullet-icon">✨</span>
+            <span data-i18n="historyRule4">Absence de hiérarchie : le rap, la musique classique, l'électro et le jazz sont célébrés avec la même dignité.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Truly Interactive Timeline with Clickable Backstage Popups -->
+      <div class="timeline-container" style="margin-top: 55px;">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <h3 style="color: #FFF; font-size: 1.8rem; margin-bottom: 8px;" data-i18n="timelineTitle">
+            Frise Chronologique Interactive des Coulisses
+          </h3>
+          <p style="color: var(--accent-gold); font-size: 0.95rem; font-weight: 600;" data-i18n="timelineSubtitle">
+            💡 Cliquez sur une date pour ouvrir les secrets et révélations historiques de chaque époque !
+          </p>
+        </div>
+
+        <div class="timeline-track-interactive">
+          <!-- 1981 -->
+          <div class="timeline-card-interactive" onclick="openTimelineModal('1981')">
+            <div class="timeline-card-left">
+              <span class="timeline-badge-year">1981</span>
+              <div class="timeline-card-title" data-i18n="timeline1981">
+                1981 : L'Enquête Secrète & Le Constat des 5 Millions de Musiciens
+              </div>
+            </div>
+            <span class="timeline-click-cta" data-i18n="timelineClickHint">🔍 Découvrir les coulisses ➔</span>
+          </div>
+
+          <!-- 1982 -->
+          <div class="timeline-card-interactive" onclick="openTimelineModal('1982')">
+            <div class="timeline-card-left">
+              <span class="timeline-badge-year">1982</span>
+              <div class="timeline-card-title" data-i18n="timeline1982">
+                1982 : Le Coup de Folie du 21 Juin & La Peur de Jack Lang
+              </div>
+            </div>
+            <span class="timeline-click-cta" data-i18n="timelineClickHint">🔍 Découvrir les coulisses ➔</span>
+          </div>
+
+          <!-- 1985 -->
+          <div class="timeline-card-interactive" onclick="openTimelineModal('1985')">
+            <div class="timeline-card-left">
+              <span class="timeline-badge-year">1985</span>
+              <div class="timeline-card-title" data-i18n="timeline1985">
+                1985 : Le Sommet Européen d'Athènes & L'Expansion
+              </div>
+            </div>
+            <span class="timeline-click-cta" data-i18n="timelineClickHint">🔍 Découvrir les coulisses ➔</span>
+          </div>
+
+          <!-- 1997 -->
+          <div class="timeline-card-interactive" onclick="openTimelineModal('1997')">
+            <div class="timeline-card-left">
+              <span class="timeline-badge-year">1997</span>
+              <div class="timeline-card-title" data-i18n="timeline1997">
+                1997 : La Charte Internationale de Budapest
+              </div>
+            </div>
+            <span class="timeline-click-cta" data-i18n="timelineClickHint">🔍 Découvrir les coulisses ➔</span>
+          </div>
+
+          <!-- Today -->
+          <div class="timeline-card-interactive" onclick="openTimelineModal('today')">
+            <div class="timeline-card-left">
+              <span class="timeline-badge-year" style="background: linear-gradient(135deg, var(--accent-lime), var(--accent-cyan)); color: #0b0e1b;">Aujourd'hui</span>
+              <div class="timeline-card-title" data-i18n="timelineToday">
+                Aujourd'hui : Plus de 120 Pays & 1000 Villes dans le Monde
+              </div>
+            </div>
+            <span class="timeline-click-cta" data-i18n="timelineClickHint">🔍 Découvrir les coulisses ➔</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="diffusion">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="spreadTag">Mondialisation Culturelle</span>
+        <h2 class="section-title" data-i18n="spreadTitle">Comment la Fête de la Musique s'est Propagée dans le Monde ?</h2>
+        <p class="section-subtitle" data-i18n="spreadSubtitle">
+          De simple fête de quartier parisienne à phénomène planétaire : le parcours fascinant d'une idée devenue universelle.
+        </p>
+      </div>
+
+      <div class="spread-grid">
+        <!-- Step 1 -->
+        <div class="spread-card">
+          <div class="spread-card-num">01</div>
+          <div class="spread-card-icon">🏛️</div>
+          <h3 class="spread-card-title" data-i18n="spreadStep1Title">1. Le Réseau Diplomatique des Alliances Françaises</h3>
+          <p class="spread-card-desc" data-i18n="spreadStep1Desc">
+            Dès 1983, le réseau mondial des Alliances Françaises et Instituts Français adopte le concept. De Bogota à Tokyo et de New Delhi à Dakar, les diplomates et artistes locaux organisent des scènes ouvertes gratuites.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="spread-card">
+          <div class="spread-card-num">02</div>
+          <div class="spread-card-icon">🇪🇺</div>
+          <h3 class="spread-card-title" data-i18n="spreadStep2Title">2. Le Tremplin Européen d'Athènes (1985)</h3>
+          <p class="spread-card-desc" data-i18n="spreadStep2Desc">
+            Lors de l'Année européenne de la musique en 1985, Jack Lang présente la fête à ses homologues européens. Berlin, Munich, Bruxelles et Barcelone l'adoptent immédiatement avec un succès retentissant.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="spread-card">
+          <div class="spread-card-num">03</div>
+          <div class="spread-card-icon">📜</div>
+          <h3 class="spread-card-title" data-i18n="spreadStep3Title">3. La Signature de la Charte de Budapest (1997)</h3>
+          <p class="spread-card-desc" data-i18n="spreadStep3Desc">
+            Face au risque de dérive commerciale, les capitales fondatrices signent une charte stricte : gratuité totale, accès universel aux musiciens amateurs, et fête célébrée le jour même du solstice d'été.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="spread-card">
+          <div class="spread-card-num">04</div>
+          <div class="spread-card-icon">🌍</div>
+          <h3 class="spread-card-title" data-i18n="spreadStep4Title">4. L'Avènement du mouvement 'Make Music Day'</h3>
+          <p class="spread-card-desc" data-i18n="spreadStep4Desc">
+            Aux États-Unis, en Inde, au Japon et au Royaume-Uni, le festival prend le nom de 'Make Music Day'. Aujourd'hui, des métropoles comme New York et Bengaluru accueillent plus de 1000 concerts en une seule journée.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="monde">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="worldTag">Rayonnement Planétaire</span>
+        <h2 class="section-title" data-i18n="worldTitle">La Fête de la Musique à Travers le Monde</h2>
+        <p class="section-subtitle" data-i18n="worldSubtitle">
+          Née à Paris, devenue un trésor partagé sur les cinq continents sous le nom de « Make Music Day ».
+        </p>
+      </div>
+
+      <div class="worldwide-grid">
+        <!-- Featured Country: India -->
+        <div class="world-city-card india-feature">
+          <div class="india-feature-header">
+            <span class="india-flag-badge">🇮🇳</span>
+            <div>
+              <h3 class="india-title" data-i18n="worldIndiaTitle">Inde (New Delhi, Bengaluru, Mumbai, Chennai, Kolkata, Pondichéry)</h3>
+              <div class="india-subtitle">Make Music Day & Alliances Françaises en Inde</div>
+            </div>
+          </div>
+          <p class="card-body" style="color: #E2E8F0; font-size: 1.05rem; line-height: 1.8;" data-i18n="worldIndiaDesc">
+            En Inde, le réseau des Alliances Françaises fait résonner Church Street à Bengaluru, Marine Drive à Mumbai et Lodhi Art District à Delhi. Des fusions spectaculaires unissent les ragas classiques au sitar et tabla avec le rock indépendant, le jazz et la chanson française. Dans la rue, des foules immenses partagent du chai chaud, des samosas et du street chaat tout en écoutant des centaines de groupes bénévoles.
+          </p>
+          <div class="india-highlight-pills">
+            <span class="india-pill">🪕 Fusion Ragas & Sitar</span>
+            <span class="india-pill">🎸 Scènes Ouvertes de Rue</span>
+            <span class="india-pill">☕ Masala Chai & Samosas</span>
+            <span class="india-pill">🤝 Alliances Françaises</span>
+            <span class="india-pill">✨ Gratuité Totale 21 Juin</span>
+          </div>
+        </div>
+
+        <div class="world-city-card">
+          <div class="world-city-flag">🇩🇪</div>
+          <h4>Berlin (Allemagne)</h4>
+          <p data-i18n="worldBerlin">
+            Plus de 100 scènes en plein air et une culture des clubs qui envahit les parcs de Kreuzberg et Friedrichshain.
+          </p>
+        </div>
+
+        <div class="world-city-card">
+          <div class="world-city-flag">🇺🇸</div>
+          <h4>New York (États-Unis)</h4>
+          <p data-i18n="worldNewYork">
+            « Make Music New York » investit Central Park, Times Square et les trottoirs de Brooklyn avec plus de 1000 concerts gratuits.
+          </p>
+        </div>
+
+        <div class="world-city-card">
+          <div class="world-city-flag">🇯🇵</div>
+          <h4>Tokyo (Japon)</h4>
+          <p data-i18n="worldTokyo">
+            Les jardins impériaux et les gares de Shibuya résonnent au son d'orchestres symphoniques et de pop japonaise.
+          </p>
+        </div>
+
+        <div class="world-city-card">
+          <div class="world-city-flag">🇨🇴</div>
+          <h4>Bogotá (Colombie)</h4>
+          <p data-i18n="worldBogota">
+            Fanfares tropicales, salsa dans les rues piétonnes et célébration des rythmes d'Amérique latine.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="histoires-vraies">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="storiesTag">Mémoires & Anecdotes</span>
+        <h2 class="section-title" data-i18n="storiesTitle">Les Vraies Histoires & Légendes du 21 Juin</h2>
+        <p class="section-subtitle" data-i18n="storiesSubtitle">
+          Des anecdotes vécues, drôles, émouvantes et surprenantes qui ont forgé la légende de cette nuit magique.
+        </p>
+      </div>
+
+      <div class="stories-grid">
+        <!-- Story 1 -->
+        <div class="story-card" onclick="openStoryModal('story1')">
+          <div>
+            <div class="story-card-tag">Légende Fondatrice</div>
+            <h3 class="story-card-title" data-i18n="story1Title">Le Miracle de 1982 : La Panique de Jack Lang</h3>
+            <p class="story-card-desc" data-i18n="story1Desc">
+              À 17h, le 21 juin 1982, les rues étaient désertes. Jack Lang crut à un désastre historique. Puis à 20h, une marée humaine déferla !
+            </p>
+          </div>
+          <div class="story-btn-readmore" data-i18n="storyReadMore">📖 Lire l'histoire complète ➔</div>
+        </div>
+
+        <!-- Story 2 -->
+        <div class="story-card" onclick="openStoryModal('story2')">
+          <div>
+            <div class="story-card-tag">Émotion Parisienne</div>
+            <h3 class="story-card-title" data-i18n="story2Title">La Cantatrice du 4e Étage dans le Marais</h3>
+            <p class="story-card-desc" data-i18n="story2Desc">
+              Une soprano parisienne ouvre sa fenêtre au crépuscule et chante Puccini. 2000 personnes s'arrêtent, les voitures coupent leur moteur et la foule pleure.
+            </p>
+          </div>
+          <div class="story-btn-readmore" data-i18n="storyReadMore">📖 Lire l'histoire complète ➔</div>
+        </div>
+
+        <!-- Story 3 -->
+        <div class="story-card" onclick="openStoryModal('story3')">
+          <div>
+            <div class="story-card-tag">Rock de Rue</div>
+            <h3 class="story-card-title" data-i18n="story3Title">L'Inconnu Célèbre au Vieil Amplificateur</h3>
+            <p class="story-card-desc" data-i18n="story3Desc">
+              Un groupe de lycéens fait griller son ampli en pleine rue. Un passant en trench-coat leur prête le sien et jamme avec eux : c'était une star du rock !
+            </p>
+          </div>
+          <div class="story-btn-readmore" data-i18n="storyReadMore">📖 Lire l'histoire complète ➔</div>
+        </div>
+
+        <!-- Story 4 -->
+        <div class="story-card" onclick="openStoryModal('story4')">
+          <div>
+            <div class="story-card-tag">Nuit Blanche Urbaine</div>
+            <h3 class="story-card-title" data-i18n="story4Title">Le Chœur Spontané du Métro à 3h du Matin</h3>
+            <p class="story-card-desc" data-i18n="story4Desc">
+              Dans la rame de la Ligne 1, un voyageur sort un accordéon. Les passagers fatigués entonnent 'Aux Champs-Élysées' en dansant entre les sièges.
+            </p>
+          </div>
+          <div class="story-btn-readmore" data-i18n="storyReadMore">📖 Lire l'histoire complète ➔</div>
+        </div>
+
+        <!-- Story 5 -->
+        <div class="story-card" onclick="openStoryModal('story5')">
+          <div>
+            <div class="story-card-tag">Générosité & Tendresse</div>
+            <h3 class="story-card-title" data-i18n="story5Title">La Sérénade Douce de l'Hôpital pour Enfants</h3>
+            <p class="story-card-desc" data-i18n="story5Desc">
+              À Lyon, une fanfare assourdit ses cuivres avec des bonnets en laine pour jouer une berceuse sous les fenêtres d'un hôpital pédiatrique illuminé.
+            </p>
+          </div>
+          <div class="story-btn-readmore" data-i18n="storyReadMore">📖 Lire l'histoire complète ➔</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="anecdotes">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="factsTag">Le Saviez-Vous ?</span>
+        <h2 class="section-title" data-i18n="factsTitle">Faits Insolites & Secrets du 21 Juin</h2>
+      </div>
+
+      <div class="facts-grid">
+        <!-- Sticky Note 1: Solstice -->
+        <div class="sticky-note yellow" style="transform: rotate(-2deg);">
+          <span class="sticky-paperclip">📎</span>
+          <div class="sticky-note-title">☀️ Le Solstice d'Été</div>
+          <p data-i18n="fact1">
+            Le 21 juin a été choisi car c'est le solstice d'été : la nuit la plus courte de l'année, idéale pour faire la fête jusqu'à l'aube sans dormir !
+          </p>
+        </div>
+
+        <!-- Sticky Note 2: Police Noise Tolerance -->
+        <div class="sticky-note pink" style="transform: rotate(1.8deg);">
+          <span class="sticky-paperclip">📎</span>
+          <div class="sticky-note-title">🚨 Tolérance Zéro Amende !</div>
+          <p>
+            Pour une seule nuit dans l'année, une circulaire officielle demande à la police française de faire preuve d'une tolérance exceptionnelle envers la musique et le bruit dans la rue jusqu'à l'aube !
+          </p>
+        </div>
+
+        <!-- Sticky Note 3: Zero Budget 1982 -->
+        <div class="sticky-note lime" style="transform: rotate(-1.5deg);">
+          <span class="sticky-paperclip">📎</span>
+          <div class="sticky-note-title">💶 Budget Zéro au Départ</div>
+          <p data-i18n="fact2">
+            Au début, le Ministère de la Culture disposait d'un budget quasi nul pour l'événement. Tout reposait sur l'enthousiasme bénévole et spontané des Français !
+          </p>
+        </div>
+
+        <!-- Sticky Note 4: Free Pianos in Stations -->
+        <div class="sticky-note cyan" style="transform: rotate(2.4deg);">
+          <span class="sticky-paperclip">📎</span>
+          <div class="sticky-note-title">🎹 Pianos en Gare SNCF</div>
+          <p>
+            Dans les gares françaises, les pianos « Vous de Jouer » sont pris d'assaut dès le matin. Du classique de Chopin au jazz déchaîné, les voyageurs improvisent sans pause !
+          </p>
+        </div>
+
+        <!-- Sticky Note 5: Make Music Day Translation -->
+        <div class="sticky-note yellow" style="transform: rotate(-2.2deg);">
+          <span class="sticky-paperclip">📎</span>
+          <div class="sticky-note-title">🌍 « Make Music Day »</div>
+          <p data-i18n="fact3">
+            Le nom officiel anglais est « Make Music Day », traduction directe du jeu de mots français « Faites de la Musique ».
+          </p>
+        </div>
+
+        <!-- Sticky Note 6: All Night Transit -->
+        <div class="sticky-note pink" style="transform: rotate(1.6deg);">
+          <span class="sticky-paperclip">📎</span>
+          <div class="sticky-note-title">🚇 Nuit Blanche Métro</div>
+          <p data-i18n="fact4">
+            En France, les transports publics (métros, RER, bus) fonctionnent souvent toute la nuit à tarif préférentiel pour raccompagner les fêtards !
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="carte">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="mapTag">Voyage Régional</span>
+        <h2 class="section-title" data-i18n="mapTitle">La Carte Interactive des Régions Françaises</h2>
+        <p class="section-subtitle" data-i18n="mapSubtitle">
+          Cliquez sur une région pour découvrir ses traditions musicales, ses spécialités festives du 21 juin et ses artistes emblématiques !
+        </p>
+      </div>
+
+      <div class="map-wrapper-box">
+        <div class="map-instruction-banner" data-i18n="mapInstruction">
+          💡 Cliquez sur un territoire pour découvrir sa fiche culturelle et ses traditions.
+        </div>
+
+        <div id="france-map-svg-wrapper">
+          <!-- SVG Map injected dynamically by france-map.js -->
+        </div>
+
+        <!-- Floating Tooltip -->
+        <div id="map-tooltip"></div>
+
+        <!-- Quick navigation pills for regions -->
+        <div class="region-pills-row" id="region-quick-pills">
+          <!-- Filled dynamically by france-map.js -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="genres">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="genresTag">Diversité Musicale</span>
+        <h2 class="section-title" data-i18n="genresTitle">Les Styles Musicaux & Les Artistes Emblématiques</h2>
+        <p class="section-subtitle" data-i18n="genresSubtitle">
+          De la tradition poétique de la Chanson à l'avant-garde de la French Touch, un panorama éclectique.
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="genre-filter-tabs">
+        <button class="genre-filter-btn active" data-filter="all" data-i18n="filterAll">Tous les genres</button>
+        <button class="genre-filter-btn" data-filter="chanson" data-i18n="filterChanson">Chanson Française</button>
+        <button class="genre-filter-btn" data-filter="electro" data-i18n="filterFrenchTouch">French Touch & Électro</button>
+        <button class="genre-filter-btn" data-filter="jazz" data-i18n="filterJazz">Jazz & Swing</button>
+        <button class="genre-filter-btn" data-filter="rock" data-i18n="filterRock">Rock & Pop</button>
+        <button class="genre-filter-btn" data-filter="world" data-i18n="filterWorld">Musiques du Monde</button>
+        <button class="genre-filter-btn" data-filter="rap" data-i18n="filterRap">Rap & Hip-Hop</button>
+      </div>
+
+      <div class="genres-showcase-grid">
+        <!-- Chanson Française -->
+        <div class="genre-card" data-category="chanson">
+          <div class="genre-header-top">
+            <span class="genre-badge" data-i18n="genre1Badge">Poésie & Voix</span>
+            <span>🎙️</span>
+          </div>
+          <h3 data-i18n="genre1Title">La Chanson Française</h3>
+          <p data-i18n="genre1Desc">
+            L'âme poétique de la France. Des textes profonds accompagnés au piano ou à l'accordéon, racontant l'amour, Paris et la vie quotidienne.
+          </p>
+          <div class="genre-artists-pill-box">
+            <div class="genre-artists-label" data-i18n="genreArtistsLabel">Artistes Phares :</div>
+            <div class="genre-artists-names">Édith Piaf, Jacques Brel, Charles Aznavour, Georges Brassens, Zaz, Stromae, Angèle.</div>
+          </div>
+        </div>
+
+        <!-- French Touch & Electro -->
+        <div class="genre-card" data-category="electro">
+          <div class="genre-header-top">
+            <span class="genre-badge" data-i18n="genre2Badge">Club & Rythme</span>
+            <span>🎛️</span>
+          </div>
+          <h3 data-i18n="genre2Title">French Touch & Musique Électronique</h3>
+          <p data-i18n="genre2Desc">
+            Le courant musical français qui a conquis le monde entier avec ses samples disco filtrés, ses lignes de basse funky et son esthétique futuriste.
+          </p>
+          <div class="genre-artists-pill-box">
+            <div class="genre-artists-label" data-i18n="genreArtistsLabel">Artistes Phares :</div>
+            <div class="genre-artists-names">Daft Punk, Justice, Cassius, Bob Sinclar, David Guetta, Laurent Garnier, Kavinsky.</div>
+          </div>
+        </div>
+
+        <!-- Jazz & Manouche -->
+        <div class="genre-card" data-category="jazz">
+          <div class="genre-header-top">
+            <span class="genre-badge" data-i18n="genre3Badge">Virtuosité & Swing</span>
+            <span>🎷</span>
+          </div>
+          <h3 data-i18n="genre3Title">Jazz Manouche & Saint-Germain</h3>
+          <p data-i18n="genre3Desc">
+            Né dans les clubs de jazz de la rive gauche de Paris et popularisé par la guitare virtuose tzigane de Django Reinhardt avec le Quintette du Hot Club de France.
+          </p>
+          <div class="genre-artists-pill-box">
+            <div class="genre-artists-label" data-i18n="genreArtistsLabel">Artistes Phares :</div>
+            <div class="genre-artists-names">Django Reinhardt, Stéphane Grappelli, Biréli Lagrène, Thomas Dutronc, Michel Petrucciani.</div>
+          </div>
+        </div>
+
+        <!-- Rock & Pop -->
+        <div class="genre-card" data-category="rock">
+          <div class="genre-header-top">
+            <span class="genre-badge" data-i18n="genre4Badge">Énergie & Riffs</span>
+            <span>🎸</span>
+          </div>
+          <h3 data-i18n="genre4Title">Le Rock & la Pop Française</h3>
+          <p data-i18n="genre4Desc">
+            Des riffs électrisants aux mélodies pop raffinées, chantés en français ou en anglais, animant les scènes éphémères des lycées et des places publiques.
+          </p>
+          <div class="genre-artists-pill-box">
+            <div class="genre-artists-label" data-i18n="genreArtistsLabel">Artistes Phares :</div>
+            <div class="genre-artists-names">Téléphone, Indochine, Phoenix, -M- (Matthieu Chedid), Noir Désir, Clara Luciani.</div>
+          </div>
+        </div>
+
+        <!-- Musiques du Monde -->
+        <div class="genre-card" data-category="world">
+          <div class="genre-header-top">
+            <span class="genre-badge" data-i18n="genre5Badge">Métissage & Traditions</span>
+            <span>🪘</span>
+          </div>
+          <h3 data-i18n="genre5Title">Musiques du Monde & Régionales</h3>
+          <p data-i18n="genre5Desc">
+            La Fête de la Musique célèbre le métissage culturel : le son des bombardes bretonnes, le raï algérien de Barbès, la polyphonie corse et le zouk des Antilles.
+          </p>
+          <div class="genre-artists-pill-box">
+            <div class="genre-artists-label" data-i18n="genreArtistsLabel">Artistes Phares :</div>
+            <div class="genre-artists-names">Khaled, Tri Yann, Kassav', I Muvrini, Manu Chao, Cheb Mami.</div>
+          </div>
+        </div>
+
+        <!-- Rap & Hip-Hop -->
+        <div class="genre-card" data-category="rap">
+          <div class="genre-header-top">
+            <span class="genre-badge" data-i18n="genre6Badge">Urbain & Rythmes</span>
+            <span>🎤</span>
+          </div>
+          <h3 data-i18n="genre6Title">Le Rap & Hip-Hop Français</h3>
+          <p data-i18n="genre6Desc">
+            Deuxième marché mondial du hip-hop après les États-Unis. Des textes incisifs et des rythmes percutants qui rassemblent les jeunes sur chaque grand boulevard.
+          </p>
+          <div class="genre-artists-pill-box">
+            <div class="genre-artists-label" data-i18n="genreArtistsLabel">Artistes Phares :</div>
+            <div class="genre-artists-names">MC Solaar, IAM, Suprême NTM, Bigflo & Oli, Orelsan, Soprano, Nekfeu.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="gastronomie">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="foodTag">Plaisirs Culinaires</span>
+        <h2 class="section-title" data-i18n="foodTitle">La Gastronomie de la Fête de la Musique</h2>
+        <p class="section-subtitle" data-i18n="foodSubtitle">
+          Que mange-t-on et que partage-t-on en déambulant de concert en concert le 21 juin ?
+        </p>
+      </div>
+
+      <div class="gastronomy-grid">
+        <div class="food-card">
+          <img class="food-card-image" src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=900&q=85" alt="Merguez sandwich with fries" loading="lazy">
+          <h3 data-i18n="food1Title">Le Sandwich Merguez-Frites</h3>
+          <p data-i18n="food1Desc">
+            La star incontestée des fêtes de rue en France ! Une baguette croustillante garnie de merguez grillées sur barbecue ambulant, nappée de moutarde forte de Dijon ou de sauce harissa, accompagnée de frites chaudes.
+          </p>
+        </div>
+
+        <div class="food-card">
+          <img class="food-card-image" src="https://images.unsplash.com/photo-1568051243858-533a607809b6?w=900&q=85" alt="French crêpes" loading="lazy">
+          <h3 data-i18n="food2Title">Les Crêpes et Galettes de Sarrasin</h3>
+          <p data-i18n="food2Desc">
+            Préparées à la minute sur des billigs chauds par des crêpiers ambulants. Galette complète (œuf, jambon, emmental) pour reprendre des forces ou crêpe beurre-sucre pour la douceur.
+          </p>
+        </div>
+
+        <div class="food-card">
+          <img class="food-card-image" src="https://images.unsplash.com/photo-1452195100486-9cc805987862?w=900&q=85" alt="French cheese board" loading="lazy">
+          <h3 data-i18n="food3Title">La Planche Apéro Bistrot</h3>
+          <p data-i18n="food3Desc">
+            Partagée sur les tables en terrasse entre deux chansons : saucisson sec d'Auvergne, Comté affiné, Brie crémeux, cornichons et corbeille de pain frais.
+          </p>
+        </div>
+
+        <div class="food-card">
+          <img class="food-card-image" src="https://images.unsplash.com/photo-1513558161293-cdaf765edfd4?w=900&q=85" alt="Refreshing summer lemonade" loading="lazy">
+          <h3 data-i18n="food4Title">Cidre Frais, Bière Pression & Diabolo</h3>
+          <p data-i18n="food4Desc">
+            Pour se désaltérer au début de l'été : un verre de cidre artisanal brut bien frais, une bière blonde locale ou un rafraîchissant diabolo grenadine/menthe.
+          </p>
+        </div>
+
+        <div class="food-card">
+          <img class="food-card-image" src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=900&q=85" alt="French quiche" loading="lazy">
+          <h3 data-i18n="food5Title">La Quiche Lorraine à Emporter</h3>
+          <p data-i18n="food5Desc">
+            Tranchée en portions faciles à déguster debout tout en écoutant un solo de saxophone : pâte brisée dorée, lardons fumés et crème onctueuse.
+          </p>
+        </div>
+
+        <div class="food-card">
+          <img class="food-card-image" src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=900&q=85" alt="Fresh waffles" loading="lazy">
+          <h3 data-i18n="food6Title">Gaufres & Chichis des Quais</h3>
+          <p data-i18n="food6Desc">
+            L'odeur vanillée du sucre glace et du chocolat chaud qui embaume les promenades nocturnes en bord de rivière.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="celebration">
+  <div class="content-wrapper">
+    <div class="section-header">
+      <span class="section-tag" data-i18n="celebrationTag">Le 21 juin en fête</span>
+      <h2 class="section-title" data-i18n="celebrationTitle">Comment la Fête de la Musique est-elle célébrée ?</h2>
+      <p class="section-subtitle" data-i18n="celebrationSubtitle">Une journée ouverte à tous, où les villes et les villages deviennent des scènes musicales.</p>
+    </div>
+    <div class="streets-grid">
+      <article class="street-card"><div class="street-icon">🎤</div><h3 data-i18n="celebration1Title">Des concerts gratuits</h3><p data-i18n="celebration1Desc">Musiciens amateurs et professionnels jouent dans les rues, les places, les parcs et les lieux publics.</p></article>
+      <article class="street-card"><div class="street-icon">🎸</div><h3 data-i18n="celebration2Title">Tous les styles de musique</h3><p data-i18n="celebration2Desc">Rock, jazz, classique, rap, électro et musiques traditionnelles se côtoient sans hiérarchie.</p></article>
+      <article class="street-card"><div class="street-icon">🌆</div><h3 data-i18n="celebration3Title">Toute la ville participe</h3><p data-i18n="celebration3Desc">Les habitants se retrouvent dans les espaces publics et découvrent des artistes près de chez eux.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="rues">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="streetTag">Atmosphère & Rues</span>
+        <h2 class="section-title" data-i18n="streetTitle">Ce qui se passe dans les rues et cafés de France</h2>
+        <p class="section-subtitle" data-i18n="streetSubtitle">
+          Le 21 juin, la France vibre au rythme d'une effervescence collective unique au monde.
+        </p>
+      </div>
+
+      <div class="streets-grid">
+        <div class="street-card interactive-card" onclick="openStreetDetailModal('cafes')">
+          <div class="street-icon">☕</div>
+          <h3 data-i18n="street1Title">Les Cafés et Terrasses en Fête</h3>
+          <p data-i18n="street1Desc">
+            Les bistrots parisiens et les cafés de province sortent leurs enceintes et accueillent des groupes live sur leurs terrasses. On trinque entre amis au son du jazz manouche ou de la pop française.
+          </p>
+          <div class="card-readmore-hint" data-i18n="streetLearnMore">🔍 Cliquez pour en savoir plus ➔</div>
+        </div>
+
+        <div class="street-card interactive-card" onclick="openStreetDetailModal('fanfares')">
+          <div class="street-icon">🎺</div>
+          <h3 data-i18n="street2Title">Les Fanfares et Cuivres Ambulants</h3>
+          <p data-i18n="street2Desc">
+            Les fanfares étudiantes et harmonies municipales défilent dans les rues pavées. Le son des trompettes, saxophones et percussions rassemble des foules joyeuses qui dansent spontanément.
+          </p>
+          <div class="card-readmore-hint" data-i18n="streetLearnMore">🔍 Cliquez pour en savoir plus ➔</div>
+        </div>
+
+        <div class="street-card interactive-card" onclick="openStreetDetailModal('spontaneous')">
+          <div class="street-icon">🎻</div>
+          <h3 data-i18n="street3Title">L'Improvisation aux Coins de Rue</h3>
+          <p data-i18n="street3Desc">
+            Un violoniste sur les marches du Sacré-Cœur, un groupe de rock dans une cour d'immeuble, un chœur a cappella sous une arche : l'espace urbain entier devient une salle de concert sans murs.
+          </p>
+          <div class="card-readmore-hint" data-i18n="streetLearnMore">🔍 Cliquez pour en savoir plus ➔</div>
+        </div>
+
+        <div class="street-card interactive-card" onclick="selectMusicStyle('frenchtouch')">
+          <div class="street-icon">🎧</div>
+          <h3 data-i18n="street4Title">Les Nuits Électro & Scènes Ouvertes</h3>
+          <p data-i18n="street4Desc">
+            Dès que le crépuscule tombe, les quais de Seine, les berges du Rhône et les places centrales vibrent aux basses de DJs sets et aux concerts de jeunes talents émergents.
+          </p>
+          <div class="card-readmore-hint" data-i18n="streetListenElectro">🎵 Écouter le style Électro ➔</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="photos">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="photosTag">Carnet de Bord Festif</span>
+        <h2 class="section-title" data-i18n="photosTitle">L'Album Photos du 21 Juin en Plein Air</h2>
+        <p class="section-subtitle" data-i18n="photosSubtitle">
+          Clichés instantanés, polaroids et souvenirs capturés au cœur de la fête à travers la France !
+        </p>
+      </div>
+
+      <div class="polaroids-grid">
+        <!-- Polaroid 1: Montmartre -->
+        <div class="polaroid-card">
+          <div class="tape-strip tape-strip-pink"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=700&q=80" alt="Concert coucher de soleil Montmartre Paris">
+          </div>
+          <div class="polaroid-caption-area">
+            <span class="stamp-badge coral">PARIS • 21H30</span>
+            <h4 class="polaroid-title" data-i18n="polaroid1Title">Montmartre au Crépuscule</h4>
+            <p class="polaroid-desc" data-i18n="polaroid1Desc">Des milliers de voix chantent ensemble sur les marches du Sacré-Cœur face au panorama illuminé de Paris.</p>
+          </div>
+        </div>
+
+        <!-- Polaroid 2: Fanfare -->
+        <div class="polaroid-card">
+          <div class="tape-strip tape-strip-gold"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=700&q=80" alt="Fanfare et cuivres en fête">
+          </div>
+          <div class="polaroid-caption-area">
+            <span class="stamp-badge gold">CUIVRES & CONFETTIS</span>
+            <h4 class="polaroid-title" data-i18n="polaroid2Title">La Fanfare en Délire</h4>
+            <p class="polaroid-desc" data-i18n="polaroid2Desc">Trompettes dorées, déguisements loufoques et confettis dans les rues pavées du Quartier Latin.</p>
+          </div>
+        </div>
+
+        <!-- Polaroid 3: Cafe & Accordion -->
+        <div class="polaroid-card">
+          <div class="tape-strip tape-strip-cyan"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=700&q=80" alt="Café bistrot terrasse fête">
+          </div>
+          <div class="polaroid-caption-area">
+            <span class="stamp-badge lime">BISTROT VIBES</span>
+            <h4 class="polaroid-title" data-i18n="polaroid3Title">Apéro & Accordéon en Terrasse</h4>
+            <p class="polaroid-desc" data-i18n="polaroid3Desc">Un verre de vin blanc, une planche de Comté et des airs de valse musette au coin d'un bistrot.</p>
+          </div>
+        </div>
+
+        <!-- Polaroid 4: Street Food Merguez -->
+        <div class="polaroid-card">
+          <div class="tape-strip tape-strip-lime"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80" alt="Barbecue de rue merguez">
+          </div>
+          <div class="polaroid-caption-area">
+            <span class="stamp-badge coral">HOT & CRISPY</span>
+            <h4 class="polaroid-title" data-i18n="polaroid4Title">Le Barbecue de Rue Épique</h4>
+            <p class="polaroid-desc" data-i18n="polaroid4Desc">L'odeur alléchante des merguez grillées sur les barbecues ambulants qui embaume chaque boulevard.</p>
+          </div>
+        </div>
+
+        <!-- Polaroid 5: Electro Quays -->
+        <div class="polaroid-card">
+          <div class="tape-strip tape-strip-pink"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=700&q=80" alt="Nuit electro quais de seine">
+          </div>
+          <div class="polaroid-caption-area">
+            <span class="stamp-badge gold">DJ SET • QUAI DE SEINE</span>
+            <h4 class="polaroid-title" data-i18n="polaroid5Title">Nuit Blanche Électro sur les Quais</h4>
+            <p class="polaroid-desc" data-i18n="polaroid5Desc">Les lumières néon et les basses percutantes des DJs au bord de la Seine jusqu'aux premières lueurs du jour.</p>
+          </div>
+        </div>
+
+        <!-- Polaroid 6: Fest-Noz Bretagne -->
+        <div class="polaroid-card">
+          <div class="tape-strip tape-strip-cyan"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=700&q=80" alt="Danses et guitares en fête">
+          </div>
+          <div class="polaroid-caption-area">
+            <span class="stamp-badge lime">TRADITION CELTIQUE</span>
+            <h4 class="polaroid-title" data-i18n="polaroid6Title">La Ronde du Fest-Noz</h4>
+            <p class="polaroid-desc" data-i18n="polaroid6Desc">En Bretagne, les mains se nouent pour danser l'An-Dro au son perçant des bombardes et binious.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="survie">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="survivalTag">Astuces d'Initiés</span>
+        <h2 class="section-title" data-i18n="survivalTitle">Le Guide de Survie du Fêtard du 21 Juin</h2>
+        <p class="section-subtitle" data-i18n="survivalSubtitle">
+          Comment vivre la Fête de la Musique comme un véritable Français ?
+        </p>
+      </div>
+
+      <div class="survival-grid">
+        <div class="survival-card">
+          <div class="tape-strip tape-strip-lime"></div>
+          <h3 data-i18n="tip1Title">1. Des Chaussures Tout-Terrain 👟</h3>
+          <p data-i18n="tip1Desc">Oubliez les talons ! Un vrai fêtard parcourt entre 8 et 15 kilomètres en marchant de scène en scène toute la nuit.</p>
+        </div>
+
+        <div class="survival-card">
+          <div class="tape-strip tape-strip-cyan"></div>
+          <h3 data-i18n="tip2Title">2. Suivre le Son au Hasard 🧭</h3>
+          <p data-i18n="tip2Desc">Ne faites aucun planning fixe ! Les meilleurs concerts sont ceux cachés dans une cour d'immeuble ou sous un porche médiéval.</p>
+        </div>
+
+        <div class="survival-card">
+          <div class="tape-strip tape-strip-gold"></div>
+          <h3 data-i18n="tip3Title">3. Le Ravitaillement de Minuit 🌭</h3>
+          <p data-i18n="tip3Desc">Repérez le stand de sandwich merguez-frites dès votre arrivée pour reprendre des forces entre deux solos de guitare.</p>
+        </div>
+
+        <div class="survival-card">
+          <div class="tape-strip tape-strip-pink"></div>
+          <h3 data-i18n="tip4Title">4. Le Métro Fonctionne Toute la Nuit 🚇</h3>
+          <p data-i18n="tip4Desc">À Paris et dans les grandes métropoles, les transports publics tournent toute la nuit pour vous ramener au petit matin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="studio">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="soundTag">Atelier Sonore Interactif</span>
+        <h2 class="section-title" data-i18n="soundTitle">Le Studio de Musique de l'Équipe</h2>
+        <p class="section-subtitle" data-i18n="soundSubtitle">
+          Testez les instruments emblématiques du festival en direct grâce à notre synthétiseur Web Audio !
+        </p>
+      </div>
+
+      <div class="studio-box">
+        <div class="studio-grid">
+          <!-- Piano Synthesizer -->
+          <div>
+            <div class="studio-block-title" data-i18n="soundPianoLabel">
+              Clavier Piano Virtuel (Cliquez ou utilisez les touches [A S D F G H J K]) :
+            </div>
+            <div class="piano-keyboard-container">
+              <div class="piano-key" data-note="C4">
+                <span class="key-note">DO</span>
+                <span class="key-hint">[A]</span>
+              </div>
+              <div class="piano-key" data-note="D4">
+                <span class="key-note">RÉ</span>
+                <span class="key-hint">[S]</span>
+              </div>
+              <div class="piano-key" data-note="E4">
+                <span class="key-note">MI</span>
+                <span class="key-hint">[D]</span>
+              </div>
+              <div class="piano-key" data-note="F4">
+                <span class="key-note">FA</span>
+                <span class="key-hint">[F]</span>
+              </div>
+              <div class="piano-key" data-note="G4">
+                <span class="key-note">SOL</span>
+                <span class="key-hint">[G]</span>
+              </div>
+              <div class="piano-key" data-note="A4">
+                <span class="key-note">LA</span>
+                <span class="key-hint">[H]</span>
+              </div>
+              <div class="piano-key" data-note="B4">
+                <span class="key-note">SI</span>
+                <span class="key-hint">[J]</span>
+              </div>
+              <div class="piano-key" data-note="C5">
+                <span class="key-note">DO+</span>
+                <span class="key-hint">[K]</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Festival Music Loops & Ambiance -->
+          <div>
+            <div class="studio-block-title" data-i18n="soundLoopsLabel">
+              Ambiance Musicale & Styles Français :
+            </div>
+            <div class="loops-buttons-grid">
+              <button class="btn-loop-style" style="border: 2px solid var(--accent-gold); background: rgba(255, 183, 3, 0.18);" onclick="selectMusicStyle('pachelbel')" data-i18n="soundLoopSoothingPiano">
+                🎹 Piano Apaisant (Mélodie Douce)
+              </button>
+              <button class="btn-loop-style" onclick="selectMusicStyle('accordion')" data-i18n="soundLoopAccordion">
+                🪗 Valse Accordéon Parisienne
+              </button>
+              <button class="btn-loop-style" onclick="selectMusicStyle('frenchtouch')" data-i18n="soundLoopFrenchTouch">
+                🎧 French Touch Électro Groove
+              </button>
+              <button class="btn-loop-style" onclick="selectMusicStyle('jazz')" data-i18n="soundLoopJazz">
+                🎹 Jazz Café Saint-Germain
+              </button>
+              <button class="btn-loop-style" onclick="selectMusicStyle('fanfare')" data-i18n="soundLoopFanfare">
+                🎺 Fanfare Festive des Rues
+              </button>
+            </div>
+
+            <div style="margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap;">
+              <button id="ambience-btn" class="btn btn-secondary" onclick="toggleAmbienceSound()" data-i18n="soundAmbienceToggle">
+                🔊 Ambiance des Rues (Foule & Rires)
+              </button>
+              <button class="btn btn-secondary" onclick="window.audioEngine.stopLoop(); updateAudioDockStatus(null);" data-i18n="soundStop">
+                ⏹️ Arrêter la musique
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="quiz">
+    <div class="content-wrapper">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="quizTag">Défi Connaissances</span>
+        <h2 class="section-title" data-i18n="quizTitle">Le Grand Quiz de la Fête de la Musique</h2>
+        <p class="section-subtitle" data-i18n="quizSubtitle">
+          Testez votre culture générale sur le festival ! Répondez correctement aux questions pour débloquer notre création vidéo et musicale exclusive.
+        </p>
+      </div>
+
+      <div class="quiz-wrapper-card" id="quiz-card-content">
+        <!-- Injected dynamically by quiz.js -->
+      </div>
+
+      <!-- Quick shortcut to directly test/view team project -->
+      <div style="text-align: center; margin-top: 24px;">
+        <button class="btn btn-secondary" onclick="openTeamProjectDirectly()" style="font-size: 0.85rem; opacity: 0.85;" data-i18n="quizDirectAccess">
+          ⭐ Accès Direct à Notre Création d'Équipe (Mode Démo)
+        </button>
+      </div>
+    </div>
+  </section>
+
+<section id="team-showcase">
+  <div class="content-wrapper">
+    <div class="section-header">
+      <span class="section-tag">🎬 VIDÉOS DU FESTIVAL</span>
+      <h2 class="section-title" data-i18n="videoSectionTitle">Les vidéos de la Fête de la Musique</h2>
+      <p class="section-subtitle" data-i18n="videoSectionSubtitle">Deux vidéos pour prolonger l'ambiance du festival.</p>
+    </div>
+    <div class="video-gallery-grid">
+      <article class="glass-card festival-video-card">
+        <h3 data-i18n="videoOneTitle">Vidéo 1</h3>
+        <video controls preload="metadata" playsinline>
+          <source src="videos/festival-video-1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </article>
+      <article class="glass-card festival-video-card">
+        <h3 data-i18n="videoTwoTitle">Vidéo 2</h3>
+        <video controls preload="metadata" playsinline>
+          <source src="videos/festival-video-2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Section: How Did This Music Festival Spread Worldwide? -->
+  
+
+  <!-- Section: True Stories & Legends of June 21st -->
+  
+    </div>
+  </section>
+
+  <!-- Interactive France Map Section -->
+  
+
+  <!-- Street Life & Atmosphere Section -->
+  
+
+  <!-- Scrapbook Polaroid Photo Album Section -->
+  
+
+  <!-- Festival Survival Guide Section -->
+  
+
+  <!-- Music Genres & Artists Section -->
+  
+
+  <!-- Gastronomy Section -->
+  
+
+  <!-- Worldwide Section (Make Music Day) -->
+  
+
+  <!-- Interactive Sound Studio Section -->
+  
+
+  <!-- Fun Facts Section (Sticky Notes & Scrapbook Insiders) -->
+  
+
+  <!-- Interactive Quiz Section -->
+  
+
+  <!-- Team Project Showcase Section -->
+  
+
+  <!-- Floating Audio Player Dock (Live Ambiance & Soothing Piano) -->
+  <div class="floating-audio-dock">
+    <div class="dock-track-info">
+      <span style="font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase;" data-i18n="dockLiveTag">Ambiance Live</span>
+      <span class="dock-now-playing" id="dock-now-playing">En pause</span>
+    </div>
+
+    <!-- Canvas Frequency Visualizer -->
+    <canvas id="audio-visualizer-canvas"></canvas>
+
+    <div class="dock-controls">
+      <!-- Quick button to toggle soothing piano -->
+      <button class="dock-soothing-btn" onclick="selectMusicStyle('pachelbel')" title="Piano Apaisant">
+        🎹 Piano
+      </button>
+      <button class="dock-btn" id="dock-play-pause-btn" onclick="toggleDockPlay()" title="Lecture / Pause">
+        ▶️
+      </button>
+      <button class="dock-btn" id="dock-mute-btn" onclick="toggleAudioMute()" title="Muet">
+        🔊
+      </button>
+      <input type="range" min="0" max="1" step="0.05" value="0.7" oninput="updateVolume(this.value)" style="width: 70px; cursor: pointer;" title="Volume">
+    </div>
+  </div>
+
+  <!-- MODAL 1: Regional Details Modal (Map Click) -->
+  <div id="region-modal" class="modal-overlay" onclick="if(event.target===this) closeRegionModal()">
+    <div class="modal-dialog">
+      <button class="modal-close-corner" onclick="closeRegionModal()">✕</button>
+      <div id="region-modal-content">
+        <!-- Filled dynamically by france-map.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: General Information Modal (Street & Cafes Read More) -->
+  <div id="general-info-modal" class="modal-overlay" onclick="if(event.target===this) closeGeneralModal()">
+    <div class="modal-dialog">
+      <button class="modal-close-corner" onclick="closeGeneralModal()">✕</button>
+      <div id="general-modal-content">
+        <!-- Filled dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: Unlock Reward Congratulations Popup (After Quiz) -->
+  <div id="unlock-congrats-modal" class="modal-overlay" onclick="if(event.target===this) this.classList.remove('open')">
+    <div class="modal-dialog" style="text-align: center; max-width: 600px;">
+      <button class="modal-close-corner" onclick="document.getElementById('unlock-congrats-modal').classList.remove('open')">✕</button>
+      <div style="font-size: 4rem; margin-bottom: 14px;">🎉 🏆 🎹</div>
+      <h2 style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 12px;" data-i18n="quizUnlockAlert">
+        Félicitations ! Défi Réussi !
+      </h2>
+      <p style="color: #E2E8F0; font-size: 1.1rem; line-height: 1.7; margin-bottom: 24px;">
+        Vous avez brillamment complété le quiz sur la Fête de la Musique ! Vous avez officiellement débloqué notre vidéo mashup exclusive avec notre camarade au piano.
+      </p>
+      <button class="btn btn-unlock-reveal" onclick="window.quizInstance.revealTeamCreation()" data-i18n="quizUnlockBtn">
+        🎁 Découvrir la Vidéo de Notre Équipe !
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="content-wrapper footer-content">
+      <div style="font-size: 1.5rem;">🇫🇷 🎶 🌍</div>
+      <p class="footer-notice" data-i18n="footerNotice">
+        Conçu avec passion pour célébrer la Fête de la Musique • Le 21 juin partout en France
+      </p>
+      <p class="footer-sources" data-i18n="footerSources">
+        Sources fiables : Ministère de la Culture (France), Archives Maurice Fleuret & Jack Lang, Make Music Alliance.
+      </p>
+      <a href="#hero" class="btn btn-secondary" style="font-size: 0.85rem; padding: 6px 14px; margin-top: 8px;" data-i18n="footerBackToTop">
+        Retour en haut ⬆️
+      </a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/translations.js"></script>
+  <script src="js/audio-engine.js"></script>
+  <script src="js/france-svg-paths.js"></script>
+  <script src="js/france-map.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
